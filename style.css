@@ -1,0 +1,30 @@
+*{
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+    padding: 20px;
+}
+
+
+h1{
+    text-align: center;
+}
+.PaginaPrincipal{
+    max-width: 900px;
+    margin:auto;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+#Tabela{
+    border-collapse: collapse;
+    border: 1px solid black;
+    box-sizing: border-box;
+}
+#Tabela td, #Tabela th {
+    border: 1px solid black;
+}
+#btn:hover{
+    cursor: pointer;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<link rel="stylesheet" href="style.css"> <!-- Ligação ao CSS-->
+<meta charset="UTF-8">
+<title> Sistema de Gestão de Parque de Estacionamento</title> <!-- Titulo que aparece na  pagina web-->
+</head>
+<body>
+    <div class="PaginaPrincipal">
+        <h1>🚗 Sistema Parque De Estacionamento</h1>
+        <form onsubmit="Send_Form(event)">
+            <div class="Grupo_Elemtos">
+            <P><label>Matricula do Veiculo: </label></P>
+            <input type="text" id="Matricula" placeholder="Ex: AA-00-BB">
+        </div>
+        <div class="Grupo_Elemtos">
+            <p><label>Tarifa por Hora(€):</label></p>
+            <input type="number" id="Tarifa" value="1">
+        </div>
+        <button type="submit" id="btn">Registar Entrada</button>
+        </form>
+        <div class="Informacoes">
+            Total de Vagas: <span id="TotalVagas">20</span>|
+            Disponiveis: <span id="VagasDisponiveis">20</span> <!-- Usa-se span para cobrir apenas o numero das vagas disponiveis-->
+        </div>
+    </div>
+    <table id="Tabela">
+        <tr>
+            <th> <!-- heading da tabela-->
+                Matricula
+            </th>
+            <th> <!-- heading da tabela-->
+                Entrada
+            </th>
+            <th>
+                Ação
+            </th>
+        </tr>
+    </table>
+<script src="script.js"></script> <!-- Ligação ao javascript-->
+</body>
+</html>
