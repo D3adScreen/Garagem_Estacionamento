@@ -11,8 +11,8 @@ h1{
     text-align: center;
 }
 .PaginaPrincipal{
+    margin: 24px auto 0;
     max-width: 900px;
-    margin:auto;
     background-color: white;
     padding: 20px;
     border-radius: 10px;
@@ -22,9 +22,12 @@ h1{
     border-collapse: collapse;
     border: 1px solid black;
     box-sizing: border-box;
+    margin-top: 24px;
+    width: 100%;
 }
 #Tabela td, #Tabela th {
     border: 1px solid black;
+    padding:4px;
 }
 #btn:hover{
     cursor: pointer;
@@ -54,4 +57,3 @@ h1{
     border-radius: 10px;
     border: solid 1px gray;
 }
-
