@@ -1,11 +1,12 @@
 *{
     font-family: Arial, sans-serif;
-    background-color: #f4f6f9;
     margin: 0;
-    padding: 20px;
+    padding: 0;
+    box-sizing: border-box;
 }
-
-
+body{
+    background-color: #f4f6f9;
+}
 h1{
     text-align: center;
 }
@@ -28,3 +29,29 @@ h1{
 #btn:hover{
     cursor: pointer;
 }
+#btn{
+    width: 100%;
+    padding: 8px;
+    background-color: #197ecb;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-radius: 10px;
+    margin: 8px 0;
+}
+.Grupo_Elementos{
+    display:flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 8px;
+
+}
+.Grupo_Elementos input{
+    padding: 8px;
+    margin-top: 4px;
+    border-radius: 10px;
+    border: solid 1px gray;
+}
+
