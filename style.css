@@ -57,3 +57,13 @@ h1{
     border-radius: 10px;
     border: solid 1px gray;
 }
+.Informacao_Adicional{
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 16px;
+}
+#Historico, #Loc, #Sobre{
+    text-decoration: none;
+    color: gray;
+}
