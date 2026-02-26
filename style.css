@@ -18,6 +18,15 @@ h1{
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
+.Pagina_Sobre{
+    margin: 24px auto 0;
+    max-width: 900px;
+    background-color: grey;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    text-align: center;
+}
 #Tabela{
     border-collapse: collapse;
     border: 1px solid black;
