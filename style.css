@@ -18,21 +18,23 @@ h1{
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-.Pagina_Sobre{
-    margin: 24px auto 0;
-    max-width: 900px;
-    background-color: grey;
-    padding: 40px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    text-align: center;
-}
 #Tabela{
     border-collapse: collapse;
     border: 1px solid black;
     box-sizing: border-box;
     margin-top: 24px;
     width: 100%;
+}
+.Pagina_Sobre{
+    margin: 24px auto 0;
+    max-width: 900px;
+    display: grid;
+    gap:30px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    padding: 25px;
+    border-left: 4px solid #000000;
+    border-right: 4px solid #000000;
 }
 #Tabela td, #Tabela th {
     border: 1px solid black;
@@ -76,3 +78,27 @@ h1{
     text-decoration: none;
     color: gray;
 }
+#Nomes{
+    border-bottom: solid gray;
+    margin-bottom: 20px;
+}
+.Pagina_Sobre:hover{
+    box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
+}
+.Circulo_Nome {
+    width: 40px;
+    height: 40px;
+    background-color: #3498db;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
