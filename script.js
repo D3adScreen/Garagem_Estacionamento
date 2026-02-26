@@ -1,5 +1,6 @@
 const input_matricula_EL=document.getElementById("Matricula")
 const Vagas_Disponieis_EL=document.getElementById("VagasDisponiveis")
+const btn_RegistarEntrada=document.getElementById("btn")
 
 function Send_Form(event){
     event.preventDefault()  //Evita que a pagina dê refresh
