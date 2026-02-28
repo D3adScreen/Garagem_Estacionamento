@@ -2,20 +2,22 @@ const input_matricula_EL=document.getElementById("Matricula")
 const Vagas_Disponiveis_EL=document.getElementById("VagasDisponiveis")
 const tabela_garagem=document.getElementById("Tabela")
 
+
+function Remover_Veiculo(btn_remover){
+    
+    // "this" refere-se ao botão clicado
+    const linha = btn_remover.closest("tr"); // Encontrar a linha (tr) pai do botão
+    linha.remove(); // Remover a linha
+    const vagas_atuais=parseInt(Vagas_Disponiveis_EL.innerText) //Usamos Parseint porque o + serve para concatenar texto
+    Vagas_Disponiveis_EL.innerText= vagas_atuais + 1
+}
+
 function Registar_Entrada(){
      //Criar Button Remover
     const btn_RemoverVeiculo=document.createElement("button")
     btn_RemoverVeiculo.className="btn_RemoverVeiculo"
     btn_RemoverVeiculo.textContent="Remover Veiculo"
-
-
-    btn_RemoverVeiculo.addEventListener("click", function(event) {
-    // "this" refere-se ao botão clicado
-    const linha = this.closest("tr"); // Encontrar a linha (tr) pai do botão
-    linha.remove(); // Remover a linha
-    const vagas_atuais=parseInt(Vagas_Disponiveis_EL.innerText) //Usamos Parseint porque o + serve para concatenar texto
-    Vagas_Disponiveis_EL.innerText= vagas_atuais +1
-    });
+    btn_RemoverVeiculo.onclick=() => {Remover_Veiculo(btn_RemoverVeiculo)}
 
     //Tabela
     //Cria as linhas e colunas
@@ -37,7 +39,6 @@ function Registar_Entrada(){
 
     input_matricula_EL.value="";  //Apaga o conteudo do input para uma nova matricula
 }
-
 
 function Send_Form(event){
     event.preventDefault()  //Evita que a pagina dê refresh
