@@ -12,11 +12,19 @@ function Send_Form(event){
             event.preventDefault()
             Vagas_Disponiveis_EL.innerText=Vagas_Disponiveis_EL.innerText-1
 
+            //Criar Button Remover
+            const btn_RemoverVeiculo=document.createElement("button")
+            btn_RemoverVeiculo.id="btn_RemoverVeiculo"
+            btn_RemoverVeiculo.textContent="Remover Veiculo"
+
+
             //Tabela
             //Cria as linhas e colunas
             const novaLinha = document.createElement('tr') //tr  linha da tabela
             const td_matricula=document.createElement('td') //td  coluna da tabela
             const td_hora=document.createElement('td')
+            const acao=document.createElement ('td')
+            acao.appendChild(btn_RemoverVeiculo)
 
             //Coloca os valores nas colunas
             td_matricula.textContent = input_matricula_EL.value; //Pega o valor do input e coloca na tabela
@@ -25,6 +33,7 @@ function Send_Form(event){
             //Adiciona a linha com os valores a tabela
             novaLinha.appendChild(td_matricula); //Adiciona a coluna da matricula à linha
             novaLinha.appendChild(td_hora); //Adiciona a coluna da hora à linha
+            novaLinha.appendChild(acao);
             tabela_garagem.appendChild(novaLinha);
 
             input_matricula_EL.value="";  //Apaga o conteudo do input para uma nova matricula
