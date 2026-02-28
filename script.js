@@ -1,7 +1,6 @@
 const input_matricula_EL=document.getElementById("Matricula")
-const Vagas_Disponieis_EL=document.getElementById("VagasDisponiveis")
-const btn_RegistarEntrada=document.getElementById("btn")
-
+const Vagas_Disponiveis_EL=document.getElementById("VagasDisponiveis")
+const tabela_garagem=document.getElementById("Tabela")
 function Send_Form(event){
     event.preventDefault()  //Evita que a pagina dê refresh
     console.log(input_matricula_EL.value)  //Verificar valor do input na consola
@@ -9,14 +8,29 @@ function Send_Form(event){
         alert("Insira uma matricula válida!")
     }
     else{
-        if(Vagas_Disponieis_EL.innerText>=1){
-            var valor_atual=Vagas_Disponieis_EL.innerText
-            valor_atual=valor_atual -1
-            Vagas_Disponieis_EL.innerText=valor_atual
+        if(Vagas_Disponiveis_EL.innerText>=1){
+            event.preventDefault()
+            Vagas_Disponiveis_EL.innerText=Vagas_Disponiveis_EL.innerText-1
+
+            //Tabela
+            //Cria as linhas e colunas
+            const novaLinha = document.createElement('tr') //tr  linha da tabela
+            const td_matricula=document.createElement('td') //td  coluna da tabela
+            const td_hora=document.createElement('td')
+
+            //Coloca os valores nas colunas
+            td_matricula.textContent = input_matricula_EL.value; //Pega o valor do input e coloca na tabela
+            td_hora.textContent ="Hora de entrada: " + new Date().toLocaleTimeString(); // Pega a hora atual
+
+            //Adiciona a linha com os valores a tabela
+            novaLinha.appendChild(td_matricula); //Adiciona a coluna da matricula à linha
+            novaLinha.appendChild(td_hora); //Adiciona a coluna da hora à linha
+            tabela_garagem.appendChild(novaLinha);
+
+            input_matricula_EL.value="";  //Apaga o conteudo do input para uma nova matricula
         }
         else{
             alert("Não há mais Lugares Disponiveis")
         }
     }
 }
-
