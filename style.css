@@ -31,7 +31,7 @@ h1{
 }
 
 /*Button dentro da tabela*/
-#btn_RemoverVeiculo{
+.btn_RemoverVeiculo{
     text-align: center;
     background-color: rgb(160, 19, 19);
     border-radius: 10px;
@@ -41,7 +41,7 @@ h1{
     color: white;
 }
 
-#btn:hover, #btn_RemoverVeiculo{
+#btn:hover, .btn_RemoverVeiculo{
     cursor: pointer;
 }
 #btn{
