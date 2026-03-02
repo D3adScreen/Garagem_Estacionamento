@@ -95,25 +95,17 @@ h1{
     border-right: 4px solid #197ecb;
 }
 #Nomes{
+    padding: 10px;
     border-bottom: solid gray;
     margin-bottom: 20px;
     position: relative;
+    text-align: center;
 }
 .Pagina_Sobre:hover{
     box-shadow: 0px 4px 10px rgba(0,0,0,0.1);
 }
-.Circulo_Nome {
-    width: 40px;
-    height: 40px;
-    background-color: #3498db;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-}
 .Autores{
+    text-align: center;
     display:flex;
     flex-direction: column;
     margin: 24px auto 0;
@@ -133,6 +125,7 @@ h1{
     border-left: 4px solid #197ecb;
 }
 #Docente{
+    padding: 20px;
     border-top: solid gray;
 }
 

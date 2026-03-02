@@ -5,7 +5,6 @@ const tabela_garagem=document.getElementById("Tabela")
 
 function Remover_Veiculo(btn_remover){
     
-    // "this" refere-se ao botão clicado
     const linha = btn_remover.closest("tr"); // Encontrar a linha (tr) pai do botão
     linha.remove(); // Remover a linha
     const vagas_atuais=parseInt(Vagas_Disponiveis_EL.innerText) //Usamos Parseint porque o + serve para concatenar texto
@@ -13,11 +12,11 @@ function Remover_Veiculo(btn_remover){
 }
 
 function Registar_Entrada(){
-     //Criar Button Remover
+    //Criar Button Remover
     const btn_RemoverVeiculo=document.createElement("button")
     btn_RemoverVeiculo.className="btn_RemoverVeiculo"
     btn_RemoverVeiculo.textContent="Remover Veiculo"
-    btn_RemoverVeiculo.onclick=() => {Remover_Veiculo(btn_RemoverVeiculo)}
+    btn_RemoverVeiculo.onclick=() => {Remover_Veiculo(btn_RemoverVeiculo)} //Quando o botão for clicado, chama a função Remover_Veiculo passando o próprio botão como argumento
 
     //Tabela
     //Cria as linhas e colunas
@@ -34,8 +33,8 @@ function Registar_Entrada(){
     //Adiciona a linha com os valores a tabela
     novaLinha.appendChild(td_matricula); //Adiciona a coluna da matricula à linha
     novaLinha.appendChild(td_hora); //Adiciona a coluna da hora à linha
-    novaLinha.appendChild(acao);
-    tabela_garagem.appendChild(novaLinha);
+    novaLinha.appendChild(acao); 
+    tabela_garagem.appendChild(novaLinha); 
 
     input_matricula_EL.value="";  //Apaga o conteudo do input para uma nova matricula
 }
