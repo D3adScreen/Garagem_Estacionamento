@@ -10,7 +10,7 @@ body{
 h1{
     text-align: center;
 }
-.PaginaPrincipal, .Historico{
+.PaginaPrincipal, .Historico_Entrada, .Historico_Saida{
     margin: 24px auto 0;
     max-width: 900px;
     background-color: white;
