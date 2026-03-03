@@ -15,7 +15,7 @@ function Registar_Entrada(){
     //Criar Button Remover
     const btn_RemoverVeiculo=document.createElement("button")
     btn_RemoverVeiculo.className="btn_RemoverVeiculo"
-    btn_RemoverVeiculo.textContent="Remover Veiculo"
+    btn_RemoverVeiculo.textContent="Remover Veiculo" //Texto do botão
     btn_RemoverVeiculo.onclick=() => {Remover_Veiculo(btn_RemoverVeiculo)} //Quando o botão for clicado, chama a função Remover_Veiculo passando o próprio botão como argumento
 
     //Tabela
@@ -56,4 +56,13 @@ function Send_Form(event){
         }
     }
     
+}
+
+
+//teste
+const vagas = document.querySelectorAll(".vaga")
+vagas.forEach(vaga => {vaga.addEventListener("click", escolher_lugar)})
+
+function escolher_lugar(event){
+    event.target.classList.toggle("ocupada")
 }
