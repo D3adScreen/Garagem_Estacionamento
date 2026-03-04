@@ -62,7 +62,7 @@ function Send_Form(event){
 //teste
 const vagas = document.querySelectorAll(".vaga")
 vagas.forEach(vaga => {vaga.addEventListener("click", escolher_lugar)})
-
 function escolher_lugar(event){
     event.target.classList.toggle("ocupada")
+    console.log(event.target.innerText) //aparece na console a vaga clicada
 }
