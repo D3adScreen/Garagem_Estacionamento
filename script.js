@@ -1,23 +1,23 @@
 const input_matricula_EL=document.getElementById("Matricula")
-const Vagas_Disponiveis_EL=document.getElementById("VagasDisponiveis")
-const tabela_garagem=document.getElementById("Tabela")
-const Tabela_Historico=document.getElementById("Tabela_Entrada")
-const Tabela_Historico_Saida=document.getElementById("Tabela_Saida")
+const Vagas_Disponiveis_EL=document.getElementById("VagasDisponiveis") 
+const tabela_garagem=document.getElementById("Tabela") //Tabela principal onde ficam os veiculos que estão atualmente na garagem
+const Tabela_Historico=document.getElementById("Tabela_Entrada") //Tabela Historico de Entrada, onde ficam registados os veiculos que entraram, mesmo depois de sairem da garagem
+const Tabela_Historico_Saida=document.getElementById("Tabela_Saida") //Tabela Historico de Saida, onde ficam registados os veiculos que sairam da garagem, mesmo depois de sairem da garagem
 
-let selectedPlace = null;
+let selectedPlace = null; 
 
 
 function Remover_Veiculo(btn_remover){
     
     const linha = btn_remover.closest("tr"); // Encontrar a linha (tr) pai do botão
     const lugarCell = linha.children[1]; // Segunda coluna é o lugar
-    const lugarText = lugarCell.textContent; // "Lugar: X"
-    const lugarNum = lugarText.replace("Lugar: ", ""); 
+    const lugarNum = lugarCell.textContent; 
+
     // Encontrar a vaga correspondente
-    const vagas = document.querySelectorAll(".vaga"); // Seleciona todas as vagas
-    vagas.forEach(vaga => {
+    const vagas = document.querySelectorAll(".vaga"); // Seleciona todos os itens da classe vaga
+    vagas.forEach(vaga => { 
         if (vaga.innerText === lugarNum) { // Encontrou a vaga correspondente
-            vaga.classList.remove("ocupada");
+            vaga.classList.remove("ocupada"); // Marca a vaga como desocupada
             vaga.classList.remove("selecionada"); // Por precaução, remove a classe de seleção também
         }
     });
@@ -31,23 +31,22 @@ function Remover_Veiculo(btn_remover){
     console.log("Horas estacionado: " + horas);
     const preco_por_hora = parseFloat(document.getElementById("Tarifa").value); // Pega o valor da tarifa por hora
     const preco = horas * preco_por_hora; // Calcula o preço total
-    const hora_saida = new Date().toLocaleTimeString(); // Hora atual formatada para exibir na tabela de saída
     
     // Criar nova linha para Tabela_Saida
-    const novaLinhaSaida = document.createElement('tr');
-    const td_matricula_saida = document.createElement('td');
-    td_matricula_saida.textContent = matricula;
-    const td_lugar_saida = document.createElement('td');
-    td_lugar_saida.textContent = lugar;
-    const td_preco_saida = document.createElement('td');
-    td_preco_saida.textContent = preco + " €";
-    const td_hora_saida = document.createElement('td');
-    td_hora_saida.textContent = "Hora de saída: " + hora_saida;
-    
-    novaLinhaSaida.appendChild(td_matricula_saida);
-    novaLinhaSaida.appendChild(td_lugar_saida);
-    novaLinhaSaida.appendChild(td_preco_saida);
-    novaLinhaSaida.appendChild(td_hora_saida);
+    const novaLinhaSaida = document.createElement('tr'); // Cria uma nova linha para a tabela de saída
+    const td_matricula_saida = document.createElement('td'); // Cria a coluna da matrícula para a tabela de saída
+    td_matricula_saida.textContent = matricula; // Define o texto da coluna da matrícula com o valor extraído da linha original
+    const td_lugar_saida = document.createElement('td'); // Cria a coluna do lugar para a tabela de saída
+    td_lugar_saida.textContent = lugar; // Define o texto da coluna do lugar com o valor extraído da linha original
+    const td_preco_saida = document.createElement('td'); // Cria a coluna do preço para a tabela de saída
+    td_preco_saida.textContent = preco + " €"; // Define o texto da coluna do preço com o valor calculado, adicionando o símbolo de euro
+    const td_hora_saida = document.createElement('td'); // Cria a coluna da hora de saída para a tabela de saída
+    td_hora_saida.textContent =new Date().toLocaleTimeString( ); // Define o texto da coluna da hora de saída com a hora atual formatada como string
+    console.log(td_hora_saida.textContent);
+    novaLinhaSaida.appendChild(td_matricula_saida); // Adiciona a coluna da matrícula à nova linha da tabela de saída
+    novaLinhaSaida.appendChild(td_lugar_saida); // Adiciona a coluna do lugar à nova linha da tabela de saída
+    novaLinhaSaida.appendChild(td_preco_saida); // Adiciona a coluna do preço à nova linha da tabela de saída
+    novaLinhaSaida.appendChild(td_hora_saida); // Adiciona a coluna da hora de saída à nova linha da tabela de saída
     Tabela_Historico_Saida.appendChild(novaLinhaSaida);
     
     linha.remove(); // Remover a linha
@@ -73,8 +72,8 @@ function Registar_Entrada(){
 
     //Coloca os valores nas colunas
     td_matricula.textContent = input_matricula_EL.value; //Pega o valor do input e coloca na tabela
-    lugar.textContent = "Lugar: " + selectedPlace.innerText; // Pega o valor do lugar selecionado
-    td_hora.textContent ="Hora de entrada: " + new Date().toLocaleTimeString(); // Pega a hora atual
+    lugar.textContent =selectedPlace.innerText; // Pega o valor do lugar selecionado
+    td_hora.textContent =new Date().toLocaleTimeString(); // Pega a hora atual
     novaLinha.setAttribute('data-entrada', Date.now()); // Salvar timestamp de entrada
 
     //Adiciona a linha com os valores a tabela
@@ -93,8 +92,8 @@ function Registar_Entrada(){
 
     //Coloca os valores nas colunas do Historico
     td_matricula_historico.textContent = input_matricula_EL.value; //Pega o valor do input e coloca na tabela
-    lugar_historico.textContent = "Lugar: " + selectedPlace.innerText;
-    td_hora_historico.textContent ="Hora de entrada: " + new Date().toLocaleTimeString();
+    lugar_historico.textContent =selectedPlace.innerText;
+    td_hora_historico.textContent =new Date().toLocaleTimeString();
 
     //Adiciona a linha com os valores a tabela do Historico
     novaLinhaHistorico.appendChild(td_matricula_historico); //Adiciona a coluna da matricula à linha
@@ -108,7 +107,7 @@ function Registar_Entrada(){
 function Send_Form(event){
     event.preventDefault()  //Evita que a pagina dê refresh
     console.log(input_matricula_EL.value)  //Verificar valor do input na consola
-    if(input_matricula_EL.value==""){   //value so existe em inputs
+    if(input_matricula_EL.value=="" || input_matricula_EL.value.length < 8){   //value so existe em inputs
         alert("Insira uma matricula válida!")
     }
     else if (!selectedPlace) {
@@ -128,7 +127,6 @@ function Send_Form(event){
     }
     
 }
-
 
 const vagas = document.querySelectorAll(".vaga") // Seleciona todas as vagas para adicionar o evento de clique
 vagas.forEach(vaga => {vaga.addEventListener("click", escolher_lugar)}) // Adiciona o evento de clique a cada vaga, chamando a função escolher_lugar quando clicada
