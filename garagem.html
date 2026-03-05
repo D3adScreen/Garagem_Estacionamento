@@ -9,8 +9,8 @@
 <body>
     <nav>
     <div class="Informacao_Adicional">
-        <a href="historico.html" id="Historico">Histórico</a> <!-- Link para a pagina do Historico-->
-        <a href="local.html" id="Loc">Localização</a> <!-- Link para a pagina do Localização-->
+        <a href="#Historico_Todo" id="Historico">Histórico</a> <!-- Link para a pagina do Historico-->
+        <a href="#local" id="Loc">Localização</a> <!-- Link para a pagina do Localização-->
         <a href="sobre.html" id="Sobre">Sobre</a> <!-- Link para a pagina do Sobre-->
     </div>
     </nav>
@@ -75,6 +75,51 @@
     <div class="vaga">19</div>
     <div class="vaga">20</div>
 </div>
+
+
+<!-- Historico de Entrada e Saida -->
+ <div id="Historico_Todo"></div>
+ <div class="Historico_Entrada">
+        <h1>🚗 Histórico de Entrada</h1>
+        <table id="Tabela_Entrada">
+        <tr>
+            <th> <!-- heading da tabela-->
+                Matricula
+            </th>
+            <th> <!-- heading da tabela-->
+                Lugar
+            </th>
+            <th>
+                Hora de Entrada
+            </th>
+        </tr>
+    </table>
+    <div class="Historico_Saida">
+        <h1>🚗 Histórico de Saida</h1>
+        <table id="Tabela_Saida">
+        <tr>
+            <th> <!-- heading da tabela-->
+                Matricula
+            </th>
+            <th> <!-- heading da tabela-->
+                Lugar
+            </th>
+            <th>
+                Preço Pago (€) <!-- heading da tabela-->
+            </th>
+            <th>
+                Hora de Saida <!-- heading da tabela-->
+            </th>
+        </tr>
+    </table>
+    </div>
+ </div>
+ <footer>
+    <div id="local"></div>
+    <br>© 2026 Sistema de Gestão de Parque de Estacionamento. <br>
+    <br>📍5100-190 Lamego - Centro Multiusos de Lamego <br>
+</footer>
+
 <script src="script.js"></script> <!-- Ligação ao javascript-->
 </body>
 </html>

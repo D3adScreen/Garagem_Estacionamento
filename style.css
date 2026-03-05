@@ -18,14 +18,14 @@ h1{
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
-#Tabela{
+#Tabela, #Tabela_Entrada, #Tabela_Saida {
     border-collapse: collapse;
     border: 1px solid black;
     box-sizing: border-box;
     margin-top: 24px;
     width: 100%;
 }
-#Tabela td, #Tabela th {
+#Tabela td, #Tabela th, #Tabela_Entrada td, #Tabela_Entrada th, #Tabela_Saida td, #Tabela_Saida th{
     border: 1px solid black;
     padding:4px;
 }
@@ -43,6 +43,7 @@ h1{
 
 #btn:hover, .btn_RemoverVeiculo{
     cursor: pointer;
+    transform: translateY(-1px); /* Efeito de elevação ao passar o mouse */
 }
 #btn{
     width: 100%;
@@ -79,6 +80,11 @@ h1{
 #Historico, #Loc, #Sobre, #Lugar{
     text-decoration: none;
     color: gray;
+
+}
+#Historico:hover, #Loc:hover, #Sobre:hover, #Lugar:hover{
+    color: #197ecb;
+    transform: translateY(-1px);
 }
 
 /*Pagina Sobre*/
@@ -182,4 +188,12 @@ h1{
 .ocupada:hover{
     background-color: red;
     cursor:not-allowed
+}
+
+footer{
+    text-align: center;
+    margin-top: 24px;
+    padding: 40px;
+    background-color: #f8f9fa;
+    border-top: 1px solid #ddd;
 }

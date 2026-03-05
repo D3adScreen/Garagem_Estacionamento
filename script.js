@@ -1,6 +1,8 @@
 const input_matricula_EL=document.getElementById("Matricula")
 const Vagas_Disponiveis_EL=document.getElementById("VagasDisponiveis")
 const tabela_garagem=document.getElementById("Tabela")
+const Tabela_Historico=document.getElementById("Tabela_Entrada")
+const Tabela_Historico_Saida=document.getElementById("Tabela_Saida")
 
 let selectedPlace = null;
 
@@ -19,6 +21,35 @@ function Remover_Veiculo(btn_remover){
             vaga.classList.remove("selecionada"); // Por precaução, remove a classe de seleção também
         }
     });
+
+    // Extrair dados para a tabela de saída
+    const matricula = linha.children[0].textContent;
+    const lugar = linha.children[1].textContent; //
+    const entrada = parseInt(linha.getAttribute('data-entrada'));
+    const saida = Date.now();
+    const horas = Math.ceil((saida - entrada) / (1000 * 60 * 60)); // Tempo em horas, arredondado para cima em milissegundos/segundos/minutos
+    console.log("Horas estacionado: " + horas);
+    const preco_por_hora = parseFloat(document.getElementById("Tarifa").value); // Pega o valor da tarifa por hora
+    const preco = horas * preco_por_hora; // Calcula o preço total
+    const hora_saida = new Date().toLocaleTimeString(); // Hora atual formatada para exibir na tabela de saída
+    
+    // Criar nova linha para Tabela_Saida
+    const novaLinhaSaida = document.createElement('tr');
+    const td_matricula_saida = document.createElement('td');
+    td_matricula_saida.textContent = matricula;
+    const td_lugar_saida = document.createElement('td');
+    td_lugar_saida.textContent = lugar;
+    const td_preco_saida = document.createElement('td');
+    td_preco_saida.textContent = preco + " €";
+    const td_hora_saida = document.createElement('td');
+    td_hora_saida.textContent = "Hora de saída: " + hora_saida;
+    
+    novaLinhaSaida.appendChild(td_matricula_saida);
+    novaLinhaSaida.appendChild(td_lugar_saida);
+    novaLinhaSaida.appendChild(td_preco_saida);
+    novaLinhaSaida.appendChild(td_hora_saida);
+    Tabela_Historico_Saida.appendChild(novaLinhaSaida);
+    
     linha.remove(); // Remover a linha
     const vagas_atuais=parseInt(Vagas_Disponiveis_EL.innerText) //Usamos Parseint porque o + serve para concatenar texto
     Vagas_Disponiveis_EL.innerText= vagas_atuais + 1
@@ -44,6 +75,7 @@ function Registar_Entrada(){
     td_matricula.textContent = input_matricula_EL.value; //Pega o valor do input e coloca na tabela
     lugar.textContent = "Lugar: " + selectedPlace.innerText; // Pega o valor do lugar selecionado
     td_hora.textContent ="Hora de entrada: " + new Date().toLocaleTimeString(); // Pega a hora atual
+    novaLinha.setAttribute('data-entrada', Date.now()); // Salvar timestamp de entrada
 
     //Adiciona a linha com os valores a tabela
     novaLinha.appendChild(td_matricula); //Adiciona a coluna da matricula à linha
@@ -51,6 +83,24 @@ function Registar_Entrada(){
     novaLinha.appendChild(td_hora); //Adiciona a coluna da hora à linha
     novaLinha.appendChild(acao); 
     tabela_garagem.appendChild(novaLinha); 
+
+
+    //Tabela Historico
+    const novaLinhaHistorico = document.createElement('tr')
+    const td_matricula_historico=document.createElement('td')
+    const lugar_historico=document.createElement('td')
+    const td_hora_historico=document.createElement('td')
+
+    //Coloca os valores nas colunas do Historico
+    td_matricula_historico.textContent = input_matricula_EL.value; //Pega o valor do input e coloca na tabela
+    lugar_historico.textContent = "Lugar: " + selectedPlace.innerText;
+    td_hora_historico.textContent ="Hora de entrada: " + new Date().toLocaleTimeString();
+
+    //Adiciona a linha com os valores a tabela do Historico
+    novaLinhaHistorico.appendChild(td_matricula_historico); //Adiciona a coluna da matricula à linha
+    novaLinhaHistorico.appendChild(lugar_historico); //Adiciona a coluna do lugar à linha
+    novaLinhaHistorico.appendChild(td_hora_historico); //Adiciona a coluna da hora à linha
+    Tabela_Historico.appendChild(novaLinhaHistorico);
 
     input_matricula_EL.value="";  //Apaga o conteudo do input para uma nova matricula
 }
