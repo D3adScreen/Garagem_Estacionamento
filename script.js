@@ -10,13 +10,13 @@ function Remover_Veiculo(btn_remover){
     const linha = btn_remover.closest("tr"); // Encontrar a linha (tr) pai do botão
     const lugarCell = linha.children[1]; // Segunda coluna é o lugar
     const lugarText = lugarCell.textContent; // "Lugar: X"
-    const lugarNum = lugarText.replace("Lugar: ", "");
+    const lugarNum = lugarText.replace("Lugar: ", ""); 
     // Encontrar a vaga correspondente
-    const vagas = document.querySelectorAll(".vaga");
+    const vagas = document.querySelectorAll(".vaga"); // Seleciona todas as vagas
     vagas.forEach(vaga => {
-        if (vaga.innerText === lugarNum) {
+        if (vaga.innerText === lugarNum) { // Encontrou a vaga correspondente
             vaga.classList.remove("ocupada");
-            vaga.classList.remove("selecionada"); // Por segurança
+            vaga.classList.remove("selecionada"); // Por precaução, remove a classe de seleção também
         }
     });
     linha.remove(); // Remover a linha
@@ -34,8 +34,8 @@ function Registar_Entrada(){
     //Tabela
     //Cria as linhas e colunas
     const novaLinha = document.createElement('tr') //tr  linha da tabela
-    const td_matricula=document.createElement('td') //td  coluna da tabela
-    const lugar=document.createElement('td')
+    const td_matricula=document.createElement('td') //td  coluna da tabela (Matricula)
+    const lugar=document.createElement('td') //td  coluna da tabela(Lugar)
     const td_hora=document.createElement('td')
     const acao=document.createElement ('td')
     acao.appendChild(btn_RemoverVeiculo)
@@ -68,8 +68,8 @@ function Send_Form(event){
         if(Vagas_Disponiveis_EL.innerText>=1){
             event.preventDefault()
             Vagas_Disponiveis_EL.innerText=Vagas_Disponiveis_EL.innerText-1
-            Registar_Entrada()
-            selectedPlace.classList.add("ocupada")
+            Registar_Entrada() //Chama a função para registar a entrada do veiculo
+            selectedPlace.classList.add("ocupada") // Marca a vaga como ocupada
             selectedPlace = null; // Reset selection after registering
         }
         else{
@@ -80,22 +80,21 @@ function Send_Form(event){
 }
 
 
-//teste
-const vagas = document.querySelectorAll(".vaga")
-vagas.forEach(vaga => {vaga.addEventListener("click", escolher_lugar)})
+const vagas = document.querySelectorAll(".vaga") // Seleciona todas as vagas para adicionar o evento de clique
+vagas.forEach(vaga => {vaga.addEventListener("click", escolher_lugar)}) // Adiciona o evento de clique a cada vaga, chamando a função escolher_lugar quando clicada
 function escolher_lugar(event){
-    const vaga = event.target;
+    const vaga = event.target; // A vaga clicada
     if (vaga.classList.contains("ocupada")) {
         return; // Não pode selecionar vaga ocupada
     }
-    if (selectedPlace === vaga) {
-        selectedPlace = null;
-        vaga.classList.remove("selecionada");
+    if (selectedPlace === vaga) { // Deselecionar se clicar novamente
+        selectedPlace = null; 
+        vaga.classList.remove("selecionada");// Remove a classe de seleção
     } else {
         if (selectedPlace) {
-            selectedPlace.classList.remove("selecionada");
+            selectedPlace.classList.remove("selecionada"); // Remove a classe de seleção da vaga anteriormente selecionada
         }
-        selectedPlace = vaga;
-        vaga.classList.add("selecionada");
+        selectedPlace = vaga; // Atualiza a vaga selecionada
+        vaga.classList.add("selecionada"); // Adiciona a classe de seleção à vaga clicada
     }
 }
