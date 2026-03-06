@@ -52,20 +52,20 @@ function Remover_Veiculo(btn_remover) {
   const vagas_atuais = parseInt(Vagas_Disponiveis_EL.innerText); //Usamos Parseint porque o + serve para concatenar texto
   Vagas_Disponiveis_EL.innerText = vagas_atuais + 1;
 
-  const dadoSaida = {
+  const dadoSaida = { //Criar um dicionario para armazenar os dados da saída do veículo
     matricula,
     place: lugar,
     data: horaSaida,
     preco,
   };
 
-  const dadosArmazenados = localStorage.getItem("historicoSaida");
-  let dados = [];
-  if (dadosArmazenados) {
+  const dadosArmazenados = localStorage.getItem("historicoSaida"); //Pega os dados armazenados no localStorage, se existirem, para manter o histórico mesmo após recarregar a página
+  let dados = []; //Cria um array vazio para armazenar os dados da saída do veículo, caso não haja dados armazenados anteriormente
+  if (dadosArmazenados) { //Se houver dados armazenados, parseia o JSON para o array de dados
     dados = JSON.parse(dadosArmazenados);
   }
-  dados.push(dadoSaida);
-  localStorage.setItem("historicoSaida", JSON.stringify(dados));
+  dados.push(dadoSaida); //Adiciona o novo dado da saída do veículo ao array de dados
+  localStorage.setItem("historicoSaida", JSON.stringify(dados)); //Armazena o array atualizado de dados da saída do veículo no localStorage, convertendo-o para JSON para que possa ser recuperado posteriormente
 }
 
 function Registar_Entrada() {
@@ -166,12 +166,12 @@ function escolher_lugar(event) {
   }
 }
 
-window.addEventListener("DOMContentLoaded", function () { 
+window.addEventListener("DOMContentLoaded", function () {  // Quando a página for carregada, executa esta função para carregar o histórico de saídas do localStorage
   const historicoSaida =
-    JSON.parse(localStorage.getItem("historicoSaida")) ?? [];
+    JSON.parse(localStorage.getItem("historicoSaida")) ?? []; // Pega o histórico de saídas armazenado no localStorage, ou um array vazio se não houver nenhum histórico armazenado
 
-  if (historicoSaida.length > 0) {
-    historicoSaida.forEach((dado) => {
+  if (historicoSaida.length > 0) { // Se houver histórico de saídas, percorre o array e adiciona cada entrada à tabela de histórico de saídas
+    historicoSaida.forEach((dado) => { // Para cada dado de saída no histórico, cria uma nova linha na tabela de histórico de saídas e preenche as colunas com os dados correspondentes (matrícula, lugar, preço e hora de saída)
       const novaLinhaSaida = document.createElement("tr");
       const td_matricula_saida = document.createElement("td"); 
       td_matricula_saida.textContent = dado.matricula; 
