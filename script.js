@@ -61,7 +61,7 @@ function Remover_Veiculo(btn_remover) {
 
   const dadosArmazenados = localStorage.getItem("historicoSaida"); //Pega os dados armazenados no localStorage, se existirem, para manter o histórico mesmo após recarregar a página
   let dados = []; //Cria um array vazio para armazenar os dados da saída do veículo, caso não haja dados armazenados anteriormente
-  if (dadosArmazenados) { //Se houver dados armazenados, parseia o JSON para o array de dados
+  if (dadosArmazenados) { //Se houver dados armazenados, converte o JSON para o array de dados
     dados = JSON.parse(dadosArmazenados);
   }
   dados.push(dadoSaida); //Adiciona o novo dado da saída do veículo ao array de dados
